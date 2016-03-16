@@ -1,0 +1,6 @@
+{
+  "attack": ["if only_trumps and dont_have_to_move then do_not_move end",
+              "play[lowest_allowed_card]"],
+  "defense": ["if only_trumps_on_table and stack_is_not_empty then pick_up_cards end",
+              "play[lowest_allowed_card]"]
+}

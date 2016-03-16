@@ -1,0 +1,4 @@
+{
+  "attack": ["play[lowest_allowed_card]"],
+  "defense": ["play[lowest_allowed_card]"]
+}

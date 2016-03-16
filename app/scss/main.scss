@@ -1,0 +1,621 @@
+/* Durak
+  main.scss
+  31/05/2015
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
+
+* { margin: 0; padding: 0; }
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+body, input, button, select { font-family: 'Lato', sans-serif; }
+
+%shadow {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+%shadow-dark {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+@mixin transition($type, $duration) {
+  -webkit-transition: $type $duration ease;
+     -moz-transition: $type $duration ease;
+       -o-transition: $type $duration ease;
+          transition: $type $duration ease;
+}
+
+$color-main: #55ACEE;
+$color-faded: #000;
+
+$bg-dark-blue: #011425;
+
+$border-medium: #666666;
+
+$content-height: 480px;
+$nav-height: 41px;
+$start-height: 190px;
+$splash-input-height: 40px;
+
+// --- SPLASH
+
+.content {
+  height: $content-height;
+  background-color: $bg-dark-blue;
+}
+
+.nav-main {
+  $title-size: 62px;
+  cursor: default;
+  position: relative;
+  width: 100%;
+  height: $nav-height;
+  background-color: $color-main;
+  text-align: center;
+  @include transition(all, 0.3s);
+  @extend %shadow;
+  .title {
+    $bg-title: rgba(0, 0, 0, 0.7);
+    position: relative;
+    display: inline-block;
+    margin-top: 4px;
+    text-align: center;
+    line-height: $title-size - 2;
+    padding: 4px 20px 10px;
+    color: #fff;
+    font-size: $title-size;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: $bg-title;
+    @include transition(all, 0.3s);
+    &::after {
+      content:"\A";
+      border-style: solid;
+      border-width: 37px;
+      border-color: transparent transparent transparent $bg-title;
+      position: absolute;
+      left: 100%;
+      top: 0;
+      @include transition(all, 0.3s);
+    }
+    &::before {
+      content:"\A";
+      border-style: solid;
+      border-width: 37px;
+      border-color: transparent $bg-title transparent transparent;
+      position: absolute;
+      left: -74px;
+      top: 0;
+      @include transition(all, 0.3s);
+    }
+  }
+  &.play {
+    height: 23px;
+    .title {
+      line-height: ($title-size / 2) - 5;
+      font-size: $title-size / 2;
+      &::after {
+        border-width: 20.5px;
+      }
+      &::before {
+        left: -40px;
+        border-width: 20.5px;
+      }
+    }
+  }
+}
+
+.splash-input {
+	margin: 30px 0 10px 0;
+	.difficulty-input:hover {
+		> label { color: #fff; }
+    &:hover {
+      .select-wrapper {
+        background-color: #fff;
+        select {
+          color: $color-main
+        }
+      }
+    }
+	}
+  .name-input:hover {
+    > label { color: #fff; }
+    > input { background: bottom left linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+            background-size: 1px 6px, 1px 1px, 1px 6px; }
+  }
+	$error-color: #FF3232;
+	label {
+		display: inline-block;
+		font-weight: 300;
+		font-size: 21px;
+		color: $color-main;
+		vertical-align: bottom;
+		padding: 8px 18px 6px 8px;
+    @include transition(all, 0.3s);
+		&.error {
+			color: $error-color;
+		}
+	}
+	input {
+		position: relative;
+		color: #fff;
+		font-weight: 300;
+		font-size: 21px;
+		width: 200px;
+    padding: 8px 8px 6px 8px;
+    outline: none;
+    border: none;
+    @include transition(all, 0.3s);
+    background: bottom left linear-gradient(#0099cc, #0099cc) no-repeat, bottom center linear-gradient(#0099cc, #0099cc) repeat-x, bottom right linear-gradient(#0099cc, #0099cc) no-repeat;
+    background-size: 1px 6px, 1px 1px, 1px 6px;
+		&:focus {
+			background: bottom left linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+    	background-size: 1px 6px, 1px 1px, 1px 6px; 
+		}
+		&.error {
+			background: bottom left linear-gradient($error-color, $error-color) no-repeat, bottom center linear-gradient($error-color, $error-color) repeat-x, bottom right linear-gradient($error-color, $error-color) no-repeat;
+    	background-size: 1px 6px, 1px 1px, 1px 6px; 
+		}
+	}
+	.error-wrapper {
+		height: 34px;
+		display: block;
+		margin: 0;
+		padding: 8px 0;
+		.error-text {
+			display: none;
+		}
+		&.error {
+			.error-text {
+				display: block;
+			}
+		}
+		.error-text {
+			text-align: center;
+			color: $error-color;
+			font-weight: 300;
+			font-size: 14px;
+		}
+	}
+  .select-wrapper {
+    $diff: 28px;
+    $width: 140px;
+    display: inline-block;
+    width: 140px;
+    height: 36px;
+    overflow: hidden;
+    background: no-repeat right;
+    background-color: $color-main;
+    border: 1px solid $color-main;
+    @extend %shadow-dark;
+    @include transition(all, 0.3s);
+    select {
+      background: transparent;
+      width: $width + $diff;
+      padding: 4px 10px 4px;
+      border: 0;
+      border-radius: 0;
+      height: 36px;
+      -webkit-appearance: none;
+      appearance: none;
+      color: #fff;
+      font-weight: 300;
+      font-size: 21px;
+      text-align: center;
+      @include transition(all, 0.3s);
+      &:focus {
+        outline: none;
+        border: none;
+        border-image: none;
+      }
+    }
+    option {
+      color: #000;
+    }
+  }
+  .difficulty-input {
+    > label {
+      padding-bottom: 9px;
+    }
+  }
+}
+.splash-wrapper {
+  background: $bg-dark-blue;
+  text-align: center;
+  width: 100%;
+}
+.splash {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  #start {
+  	$color-opaque: #466478;
+    color: $color-opaque;
+    background: #0F0F0F;
+    border: 1px solid $border-medium;
+    border-radius: 7px;
+    display: inline-block;
+    margin: 0;
+    min-height: 90px;
+    padding: 10px 50px 25px 50px;
+    cursor: pointer;
+    @include transition(all, 0.3s);
+    &.startable {
+    	background: #000;
+    	color: $color-main;	
+    	&:hover {
+	      border-color: #FFF;
+	      -webkit-box-shadow: 0 0 85px #316696;
+	      box-shadow: 0 0 85px #316696;
+	      color: #FFF;
+	    }
+	    .icon-start {
+	    	&::after {
+	    		border-color: transparent transparent transparent $color-main;
+	    	}
+	    }
+    }
+    .icon-start {
+      display: block;
+      position: relative;
+      width: 128px;
+      height: 128px;
+      &::after {
+      	content:"\A";
+				border-style: solid;
+	      border-width: 48px;
+	      border-left-width: 64px;
+	      border-color: transparent transparent transparent $color-opaque;
+	      position: absolute;
+	      left: 38px;
+	      top: 16px;
+	      @include transition(all, 0.3s);
+      }
+    }
+    span {
+      display: block;
+      text-align: center;
+      font-weight: normal;
+      font-size: 21px;
+    }
+  }
+}
+
+// --- GAME
+
+$canvas-width: 640px;
+$canvas-height: 447px;
+
+$card-width: 66px;
+$card-height: 96px;
+$card-offset: 4px;
+
+$board-offset: 12px;
+$height-coeff: 3/2;
+
+$wrap-padding: 16px;
+
+$bg-game: #F0F0FF;
+$bg-hands: #D2D2FF;
+$bg-board: #D7D7D7;
+$color-secondary: #9F94EF;
+
+$button-height: 20px;
+
+$hand-padding: 8px;
+
+#durak {
+  width: $canvas-width;
+  height: $canvas-height;
+  margin: 0 auto;
+  position: relative;
+  .opponent-side, .player-side {
+    position: absolute;
+    width: 100%;
+    height: $card-height + ($hand-padding * 2);
+    padding: $hand-padding;
+    background-color: $bg-hands;
+    @extend %shadow;
+  }
+  .opponent-side {
+    top: 0;
+  }
+  .player-side {
+    bottom: 0;
+  }
+  .board-wrapper {
+    position: absolute;
+    top: $card-height + ($hand-padding * 2) + $wrap-padding;
+    left: 0; right: 0;
+    height: ($card-height * $height-coeff) + ($hand-padding * 2);
+    width: 100%;
+    margin: 0 auto;
+    padding: $hand-padding;
+    background-color: $bg-board;
+    @extend %shadow;
+    .board {
+    	height: $card-height * $height-coeff;
+    	position: relative;
+    	.attack-wrapper, .defense-wrapper {
+    		position: absolute;
+    		left: 0;
+    		.card {
+    			float: left;
+    		}
+    	}
+    	.attack-wrapper {
+    		top: 0;
+    		z-index: 1;
+    	}
+    	.defense-wrapper {
+    		bottom: 0;
+	    	z-index: 2;
+	    }
+    }
+  }
+  .deck-container {
+    position: absolute;
+    top: ((($card-height * $height-coeff)) / 2) - ($card-height / 2);
+    right: 0;
+    .deck-count, .deck, .trump-card {
+    	position: absolute;
+    	right: 0;
+    }
+    .deck-count-bg {
+    	border-style: solid;
+      border-width: 21px;
+      border-right-width: 36px;
+      border-color: transparent #fff transparent transparent;
+      position: absolute;
+      right: 0;
+      top: ($card-height / 2) - 21;
+      z-index: 3;
+      @extend %shadow-dark;
+    }
+    .deck-count {
+    	z-index: 4;
+    	display: block;
+    	text-align: center;
+    	color: $color-main;
+    	font-weight: bold;
+    	font-size: 15px;
+    	top: ($card-height / 2) - 9;
+      padding-right: 2px;
+    }
+    .deck {
+    	z-index: 2;
+    }
+    .trump-card {
+    	z-index: 1;
+    	right: $card-width / 2;
+    }
+    .deck-wrapper {
+  		position: relative;
+  	}
+  }
+  .card {
+    float: left;
+    height: $card-height;
+    width: $card-width;
+    border-radius: 2px;
+    margin-right: $card-offset;
+    @extend %shadow;
+    &.front {
+      background: url('/img/cards.png') no-repeat;
+    }
+    &.back {
+      background: url('/img/back.jpg') no-repeat;
+      background-position: center center;
+    }
+  }
+  .hand-card {
+  	cursor: pointer;
+  	@include transition(all, 0.3s);
+  	&:hover {
+  		margin-top: -18px;
+  	}
+  }
+}
+
+.button-wrapper {
+	position: absolute;
+	bottom: $card-height + ($hand-padding * 3);
+	width: 100%;
+	text-align: center;
+	> button {
+		display: block;
+		margin: 0 auto;
+		cursor: pointer;
+		outline: none;
+		border: none;
+		font-weight: normal;
+    color: #fff;
+    padding: 4px 14px;
+    font-size: 17px;
+		@include transition(all, 0.2s);
+    @extend %shadow-dark;
+		&:hover {
+			color: #fff;
+		}
+		&.Take {
+      border: 1px solid #EE5555;
+      background-color: #EE5555;
+      color: #fff;
+      &:hover {
+        background-color: #fff;
+        border: 1px solid #fff;
+        color: #EE5555;
+      }
+		}
+		&.Done {
+			border: 1px solid $color-main;
+      background-color: $color-main;
+      color: #fff;
+      &:hover {
+        background-color: #fff;
+        border: 1px solid #fff;
+        color: $color-main;
+      }
+		}
+		&.Hide {
+			display: none;
+		}
+	}
+}
+
+$end-wrapper-height: 183px;
+
+.end-wrapper {
+	position: absolute;
+	top: 64px;
+	left: 0; right: 0;
+	height: $end-wrapper-height;
+	margin: 0 auto;
+	text-align: center;
+	.end {
+		display: inline-block;
+		margin: 0 auto;
+		background-color: #001D3B;
+		padding: 20px;
+    @extend %shadow;
+		> span {
+      display: block;
+      font-weight: bold;
+      font-size: 28px;
+      padding: 0 32px 26px;
+			color: #fff;
+		}
+    .play-again, .scores {
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      font-weight: 300;
+      @extend %shadow-dark;
+      @include transition(all, 0.2s);
+      &:hover {
+        background-color: #fff;
+        border: 1px solid #fff;
+        color: $color-main;
+      }
+    }
+		.play-again {
+      border: 1px solid $color-main;
+			background-color: $color-main;
+			color: #fff;
+			padding: 8px 14px;
+      font-size: 26px;
+		}
+    .scores {
+      border: 1px solid $color-main;
+      background-color: transparent;
+      color: $color-main;
+      padding: 4px 12px;
+      font-size: 19px;
+      margin-top: 26px;
+    }
+	}
+}
+
+.game {
+  padding: 64px 0;
+  background-color: $bg-dark-blue;
+  &.gameover {
+    padding: 0;
+    .game-wrapper {
+      padding: 0;
+    }
+  }
+}
+
+.game-wrapper {
+  position: relative;
+  width: $canvas-width + ($wrap-padding * 2);
+  background-color: $bg-game;
+  padding: $wrap-padding;
+  margin: 0 auto;
+  @extend %shadow;
+}
+
+$suits-size: 50px;
+#durak .suits {
+  position: absolute;
+  top: ((($card-height * $height-coeff)) / 2) - ($suits-size / 2);
+  right: 16px;
+  width: $suits-size;
+  height: $suits-size;
+  background: url('/img/suits.png') no-repeat;
+  &.S { background-position: 0 0; }
+  &.H { background-position: 0 -50px; }
+  &.D { background-position: -50px 0; }
+  &.C { background-position: -50px -50px; }
+}
+
+// --- Card sprites 
+
+#durak .card.front {
+&.card_14C { background-position: 0 0; }
+&.card_14D { background-position: 0 -97px; }
+&.card_14H { background-position: 0 -194px; }
+&.card_14S { background-position: 0 -291px; }
+&.card_2C { background-position: 0 -388px; }
+&.card_2D { background-position: 0 -485px; }
+&.card_2H { background-position: 0 -582px; }
+&.card_2S { background-position: 0 -679px; }
+&.card_3C { background-position: 0 -776px; }
+&.card_3D { background-position: 0 -873px; }
+&.card_3H { background-position: 0 -970px; }
+&.card_3S { background-position: 0 -1067px; }
+&.card_4C { background-position: 0 -1164px; }
+&.card_4D { background-position: 0 -1261px; }
+&.card_4H { background-position: 0 -1358px; }
+&.card_4S { background-position: 0 -1455px; }
+&.card_5C { background-position: 0 -1552px; }
+&.card_5D { background-position: 0 -1649px; }
+&.card_5H { background-position: 0 -1746px; }
+&.card_5S { background-position: 0 -1843px; }
+&.card_6C { background-position: 0 -1940px; }
+&.card_6D { background-position: 0 -2037px; }
+&.card_6H { background-position: 0 -2134px; }
+&.card_6S { background-position: 0 -2231px; }
+&.card_7C { background-position: 0 -2328px; }
+&.card_7D { background-position: 0 -2425px; }
+&.card_7H { background-position: 0 -2522px; }
+&.card_7S { background-position: 0 -2619px; }
+&.card_8C { background-position: 0 -2716px; }
+&.card_8D { background-position: 0 -2813px; }
+&.card_8H { background-position: 0 -2910px; }
+&.card_8S { background-position: 0 -3007px; }
+&.card_9C { background-position: 0 -3104px; }
+&.card_9D { background-position: 0 -3201px; }
+&.card_9H { background-position: 0 -3298px; }
+&.card_9S { background-position: 0 -3395px; }
+&.card_10C { background-position: 0 -3492px; }
+&.card_10D { background-position: 0 -3589px; }
+&.card_10H { background-position: 0 -3686px; }
+&.card_10S { background-position: 0 -3783px; }
+&.card_11C { background-position: 0 -3880px; }
+&.card_11D { background-position: 0 -3977px; }
+&.card_11H { background-position: 0 -4074px; }
+&.card_11S { background-position: 0 -4171px; }
+&.card_12C { background-position: 0 -4268px; }
+&.card_12D { background-position: 0 -4365px; }
+&.card_12H { background-position: 0 -4462px; }
+&.card_12S { background-position: 0 -4559px; }
+&.card_13C { background-position: 0 -4656px; }
+&.card_13D { background-position: 0 -4753px; }
+&.card_13H { background-position: 0 -4850px; }
+&.card_13S { background-position: 0 -4947px; }
+}

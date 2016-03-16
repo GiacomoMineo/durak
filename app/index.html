@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Durak</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body ng-app="durak">
+
+    <div class="content" ng-controller="DurakCtrl">
+      <nav class="nav-main" ng-class="{play: playing}">
+        <h1 class="title">Durak</h1>
+      </nav>
+
+      <div ng-show="playing" ng-class="{gameover: checkEnd()}" class="game">
+        <div class="game-wrapper">
+          <div id="durak" ng-hide="checkEnd()">
+            <div class="opponent-side">
+              <div ng-repeat="i in getCount(game.players[1].cards.length) track by $index" class="card back"></div>
+            </div>
+            <div class="board-wrapper">
+              <div class="board">
+                <div class="attack-wrapper">
+                  <div ng-repeat="boardCard in game.defended_cards" ng-class="getCardClass(boardCard)" class="card front attack"></div>
+                  <div ng-repeat="boardCard in game.undefended_cards" ng-class="getCardClass(boardCard)" class="card front attack"></div>
+                </div>
+                <div class="defense-wrapper">
+                  <div ng-repeat="boardCard in game.defense" ng-class="getCardClass(boardCard)" class="card front defense"></div>
+                </div>
+                <div class="deck-container">
+                  <div class="deck-wrapper">
+                    <div class="deck card back" ng-show="game.deck.length > 1">
+                      <span class="deck-count-bg"></span>
+                      <span class="deck-count">{{game.deck.length - 1}}</span>
+                    </div>
+                    <div class="trump-card card front" ng-class="getCardClass(game.deck[0])" ng-show="game.deck.length"></div>
+                  </div>
+                </div>
+                <div ng-show="game.deck.length == 0" ng-class="game.trumps" class="suits"></div>
+              </div>
+            </div>
+            <div class="button-wrapper">
+              <button ng-class="checkTurn(game.players[0], game.players[1])" ng-click="game.end_turn(game.players[0], game.players[1])">{{checkTurn(game.players[0], game.players[1])}}</button>
+            </div>
+            <div class="player-side">
+              <div ng-repeat="card in game.players[0].cards" ng-click="handCardClick(card)" ng-class="getCardClass(card)" class="hand-card card front"></div>
+            </div>
+          </div>
+          <div ng-show="checkEnd()" class="end-wrapper">
+            <div class="end">
+              <span>{{winner.name}} has won!</span>
+              <button class="play-again" ng-click="playAgain(winner.human_won)">Play again!</button>
+              <!--<button class="scores">Scores</button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-hide="playing" class="splash-wrapper">
+        <div class="splash">
+          <div class="splash-input">
+            <form name="gameForm" novalidate>
+              <div class="difficulty-input">
+                <label for="difficulty">Difficulty</label>
+                <div class="select-wrapper">
+                  <select id="difficulty" name="difficulty" ng-model="gameDifficulty" ng-options="difficulty.file as difficulty.name for difficulty in difficulties">
+                  </select>
+                </div>
+              </div>
+              <div class="name-input">
+                <label ng-class="{error: checkNameError()}" ng-click="focusInput($event)" for="name">Name</label>
+                <input ng-class="{error: checkNameError()}" type="text" id="name" name="name" required minlength=3 ng-model="playerName">
+                <div ng-class="{error: gameForm.submitted}" class="error-wrapper">
+                  <span ng-show="gameForm.name.$error.minlength" class="error-text">Name must be minimum 3 characters long.</span>
+                  <span ng-show="gameForm.name.$error.required" class="error-text">Name is required.</span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div ng-class="{startable: playerName}" ng-click="initialize_game()" id="start">
+            <i class="icon-start"></i>
+            <span>Start game!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script type="text/javascript" src="js/ai-generator.js"></script>
+    <script type="text/javascript" src="js/game.js"></script>
+    <script type="text/javascript" src="js/ui.js"></script>
+  </body>
+</html>

@@ -1,0 +1,568 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
+/* Durak
+  main.scss
+  31/05/2015
+*/
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+body, input, button, select {
+  font-family: 'Lato', sans-serif; }
+
+.nav-main, #durak .opponent-side, #durak .player-side, #durak .board-wrapper, #durak .card, .end-wrapper .end, .game-wrapper {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); }
+
+.splash-input .select-wrapper, #durak .deck-container .deck-count-bg, .button-wrapper > button, .end-wrapper .end .play-again, .end-wrapper .end .scores {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+.content {
+  height: 480px;
+  background-color: #011425; }
+
+.nav-main {
+  cursor: default;
+  position: relative;
+  width: 100%;
+  height: 41px;
+  background-color: #55ACEE;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease; }
+  .nav-main .title {
+    position: relative;
+    display: inline-block;
+    margin-top: 4px;
+    text-align: center;
+    line-height: 60px;
+    padding: 4px 20px 10px;
+    color: #fff;
+    font-size: 62px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.7);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    .nav-main .title::after {
+      content: "\A";
+      border-style: solid;
+      border-width: 37px;
+      border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+      position: absolute;
+      left: 100%;
+      top: 0;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+    .nav-main .title::before {
+      content: "\A";
+      border-style: solid;
+      border-width: 37px;
+      border-color: transparent rgba(0, 0, 0, 0.7) transparent transparent;
+      position: absolute;
+      left: -74px;
+      top: 0;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+  .nav-main.play {
+    height: 23px; }
+    .nav-main.play .title {
+      line-height: 26px;
+      font-size: 31px; }
+      .nav-main.play .title::after {
+        border-width: 20.5px; }
+      .nav-main.play .title::before {
+        left: -40px;
+        border-width: 20.5px; }
+
+.splash-input {
+  margin: 30px 0 10px 0; }
+  .splash-input .difficulty-input:hover > label {
+    color: #fff; }
+  .splash-input .difficulty-input:hover:hover .select-wrapper {
+    background-color: #fff; }
+    .splash-input .difficulty-input:hover:hover .select-wrapper select {
+      color: #55ACEE; }
+  .splash-input .name-input:hover > label {
+    color: #fff; }
+  .splash-input .name-input:hover > input {
+    background: bottom left linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+    background-size: 1px 6px, 1px 1px, 1px 6px; }
+  .splash-input label {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 21px;
+    color: #55ACEE;
+    vertical-align: bottom;
+    padding: 8px 18px 6px 8px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    .splash-input label.error {
+      color: #FF3232; }
+  .splash-input input {
+    position: relative;
+    color: #fff;
+    font-weight: 300;
+    font-size: 21px;
+    width: 200px;
+    padding: 8px 8px 6px 8px;
+    outline: none;
+    border: none;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background: bottom left linear-gradient(#0099cc, #0099cc) no-repeat, bottom center linear-gradient(#0099cc, #0099cc) repeat-x, bottom right linear-gradient(#0099cc, #0099cc) no-repeat;
+    background-size: 1px 6px, 1px 1px, 1px 6px; }
+    .splash-input input:focus {
+      background: bottom left linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+      background-size: 1px 6px, 1px 1px, 1px 6px; }
+    .splash-input input.error {
+      background: bottom left linear-gradient(#FF3232, #FF3232) no-repeat, bottom center linear-gradient(#FF3232, #FF3232) repeat-x, bottom right linear-gradient(#FF3232, #FF3232) no-repeat;
+      background-size: 1px 6px, 1px 1px, 1px 6px; }
+  .splash-input .error-wrapper {
+    height: 34px;
+    display: block;
+    margin: 0;
+    padding: 8px 0; }
+    .splash-input .error-wrapper .error-text {
+      display: none; }
+    .splash-input .error-wrapper.error .error-text {
+      display: block; }
+    .splash-input .error-wrapper .error-text {
+      text-align: center;
+      color: #FF3232;
+      font-weight: 300;
+      font-size: 14px; }
+  .splash-input .select-wrapper {
+    display: inline-block;
+    width: 140px;
+    height: 36px;
+    overflow: hidden;
+    background: no-repeat right;
+    background-color: #55ACEE;
+    border: 1px solid #55ACEE;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    .splash-input .select-wrapper select {
+      background: transparent;
+      width: 168px;
+      padding: 4px 10px 4px;
+      border: 0;
+      border-radius: 0;
+      height: 36px;
+      -webkit-appearance: none;
+      appearance: none;
+      color: #fff;
+      font-weight: 300;
+      font-size: 21px;
+      text-align: center;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease; }
+      .splash-input .select-wrapper select:focus {
+        outline: none;
+        border: none;
+        border-image: none; }
+    .splash-input .select-wrapper option {
+      color: #000; }
+  .splash-input .difficulty-input > label {
+    padding-bottom: 9px; }
+
+.splash-wrapper {
+  background: #011425;
+  text-align: center;
+  width: 100%; }
+
+.splash {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center; }
+  .splash #start {
+    color: #466478;
+    background: #0F0F0F;
+    border: 1px solid #666666;
+    border-radius: 7px;
+    display: inline-block;
+    margin: 0;
+    min-height: 90px;
+    padding: 10px 50px 25px 50px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    .splash #start.startable {
+      background: #000;
+      color: #55ACEE; }
+      .splash #start.startable:hover {
+        border-color: #FFF;
+        -webkit-box-shadow: 0 0 85px #316696;
+        box-shadow: 0 0 85px #316696;
+        color: #FFF; }
+      .splash #start.startable .icon-start::after {
+        border-color: transparent transparent transparent #55ACEE; }
+    .splash #start .icon-start {
+      display: block;
+      position: relative;
+      width: 128px;
+      height: 128px; }
+      .splash #start .icon-start::after {
+        content: "\A";
+        border-style: solid;
+        border-width: 48px;
+        border-left-width: 64px;
+        border-color: transparent transparent transparent #466478;
+        position: absolute;
+        left: 38px;
+        top: 16px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease; }
+    .splash #start span {
+      display: block;
+      text-align: center;
+      font-weight: normal;
+      font-size: 21px; }
+
+#durak {
+  width: 640px;
+  height: 447px;
+  margin: 0 auto;
+  position: relative; }
+  #durak .opponent-side, #durak .player-side {
+    position: absolute;
+    width: 100%;
+    height: 112px;
+    padding: 8px;
+    background-color: #D2D2FF; }
+  #durak .opponent-side {
+    top: 0; }
+  #durak .player-side {
+    bottom: 0; }
+  #durak .board-wrapper {
+    position: absolute;
+    top: 128px;
+    left: 0;
+    right: 0;
+    height: 160px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+    background-color: #D7D7D7; }
+    #durak .board-wrapper .board {
+      height: 144px;
+      position: relative; }
+      #durak .board-wrapper .board .attack-wrapper, #durak .board-wrapper .board .defense-wrapper {
+        position: absolute;
+        left: 0; }
+        #durak .board-wrapper .board .attack-wrapper .card, #durak .board-wrapper .board .defense-wrapper .card {
+          float: left; }
+      #durak .board-wrapper .board .attack-wrapper {
+        top: 0;
+        z-index: 1; }
+      #durak .board-wrapper .board .defense-wrapper {
+        bottom: 0;
+        z-index: 2; }
+  #durak .deck-container {
+    position: absolute;
+    top: 24px;
+    right: 0; }
+    #durak .deck-container .deck-count, #durak .deck-container .deck, #durak .deck-container .trump-card {
+      position: absolute;
+      right: 0; }
+    #durak .deck-container .deck-count-bg {
+      border-style: solid;
+      border-width: 21px;
+      border-right-width: 36px;
+      border-color: transparent #fff transparent transparent;
+      position: absolute;
+      right: 0;
+      top: 27px;
+      z-index: 3; }
+    #durak .deck-container .deck-count {
+      z-index: 4;
+      display: block;
+      text-align: center;
+      color: #55ACEE;
+      font-weight: bold;
+      font-size: 15px;
+      top: 39px;
+      padding-right: 2px; }
+    #durak .deck-container .deck {
+      z-index: 2; }
+    #durak .deck-container .trump-card {
+      z-index: 1;
+      right: 33px; }
+    #durak .deck-container .deck-wrapper {
+      position: relative; }
+  #durak .card {
+    float: left;
+    height: 96px;
+    width: 66px;
+    border-radius: 2px;
+    margin-right: 4px; }
+    #durak .card.front {
+      background: url('/img/cards.png') no-repeat; }
+    #durak .card.back {
+      background: url('/img/back.jpg') no-repeat;
+      background-position: center center; }
+  #durak .hand-card {
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; }
+    #durak .hand-card:hover {
+      margin-top: -18px; }
+
+.button-wrapper {
+  position: absolute;
+  bottom: 120px;
+  width: 100%;
+  text-align: center; }
+  .button-wrapper > button {
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-weight: normal;
+    color: #fff;
+    padding: 4px 14px;
+    font-size: 17px;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease; }
+    .button-wrapper > button:hover {
+      color: #fff; }
+    .button-wrapper > button.Take {
+      border: 1px solid #EE5555;
+      background-color: #EE5555;
+      color: #fff; }
+      .button-wrapper > button.Take:hover {
+        background-color: #fff;
+        border: 1px solid #fff;
+        color: #EE5555; }
+    .button-wrapper > button.Done {
+      border: 1px solid #55ACEE;
+      background-color: #55ACEE;
+      color: #fff; }
+      .button-wrapper > button.Done:hover {
+        background-color: #fff;
+        border: 1px solid #fff;
+        color: #55ACEE; }
+    .button-wrapper > button.Hide {
+      display: none; }
+
+.end-wrapper {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  height: 183px;
+  margin: 0 auto;
+  text-align: center; }
+  .end-wrapper .end {
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #001D3B;
+    padding: 20px; }
+    .end-wrapper .end > span {
+      display: block;
+      font-weight: bold;
+      font-size: 28px;
+      padding: 0 32px 26px;
+      color: #fff; }
+    .end-wrapper .end .play-again, .end-wrapper .end .scores {
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      font-weight: 300;
+      -webkit-transition: all 0.2s ease;
+      -moz-transition: all 0.2s ease;
+      -o-transition: all 0.2s ease;
+      transition: all 0.2s ease; }
+      .end-wrapper .end .play-again:hover, .end-wrapper .end .scores:hover {
+        background-color: #fff;
+        border: 1px solid #fff;
+        color: #55ACEE; }
+    .end-wrapper .end .play-again {
+      border: 1px solid #55ACEE;
+      background-color: #55ACEE;
+      color: #fff;
+      padding: 8px 14px;
+      font-size: 26px; }
+    .end-wrapper .end .scores {
+      border: 1px solid #55ACEE;
+      background-color: transparent;
+      color: #55ACEE;
+      padding: 4px 12px;
+      font-size: 19px;
+      margin-top: 26px; }
+
+.game {
+  padding: 64px 0;
+  background-color: #011425; }
+  .game.gameover {
+    padding: 0; }
+    .game.gameover .game-wrapper {
+      padding: 0; }
+
+.game-wrapper {
+  position: relative;
+  width: 672px;
+  background-color: #F0F0FF;
+  padding: 16px;
+  margin: 0 auto; }
+
+#durak .suits {
+  position: absolute;
+  top: 47px;
+  right: 16px;
+  width: 50px;
+  height: 50px;
+  background: url('/img/suits.png') no-repeat; }
+  #durak .suits.S {
+    background-position: 0 0; }
+  #durak .suits.H {
+    background-position: 0 -50px; }
+  #durak .suits.D {
+    background-position: -50px 0; }
+  #durak .suits.C {
+    background-position: -50px -50px; }
+
+#durak .card.front.card_14C {
+  background-position: 0 0; }
+#durak .card.front.card_14D {
+  background-position: 0 -97px; }
+#durak .card.front.card_14H {
+  background-position: 0 -194px; }
+#durak .card.front.card_14S {
+  background-position: 0 -291px; }
+#durak .card.front.card_2C {
+  background-position: 0 -388px; }
+#durak .card.front.card_2D {
+  background-position: 0 -485px; }
+#durak .card.front.card_2H {
+  background-position: 0 -582px; }
+#durak .card.front.card_2S {
+  background-position: 0 -679px; }
+#durak .card.front.card_3C {
+  background-position: 0 -776px; }
+#durak .card.front.card_3D {
+  background-position: 0 -873px; }
+#durak .card.front.card_3H {
+  background-position: 0 -970px; }
+#durak .card.front.card_3S {
+  background-position: 0 -1067px; }
+#durak .card.front.card_4C {
+  background-position: 0 -1164px; }
+#durak .card.front.card_4D {
+  background-position: 0 -1261px; }
+#durak .card.front.card_4H {
+  background-position: 0 -1358px; }
+#durak .card.front.card_4S {
+  background-position: 0 -1455px; }
+#durak .card.front.card_5C {
+  background-position: 0 -1552px; }
+#durak .card.front.card_5D {
+  background-position: 0 -1649px; }
+#durak .card.front.card_5H {
+  background-position: 0 -1746px; }
+#durak .card.front.card_5S {
+  background-position: 0 -1843px; }
+#durak .card.front.card_6C {
+  background-position: 0 -1940px; }
+#durak .card.front.card_6D {
+  background-position: 0 -2037px; }
+#durak .card.front.card_6H {
+  background-position: 0 -2134px; }
+#durak .card.front.card_6S {
+  background-position: 0 -2231px; }
+#durak .card.front.card_7C {
+  background-position: 0 -2328px; }
+#durak .card.front.card_7D {
+  background-position: 0 -2425px; }
+#durak .card.front.card_7H {
+  background-position: 0 -2522px; }
+#durak .card.front.card_7S {
+  background-position: 0 -2619px; }
+#durak .card.front.card_8C {
+  background-position: 0 -2716px; }
+#durak .card.front.card_8D {
+  background-position: 0 -2813px; }
+#durak .card.front.card_8H {
+  background-position: 0 -2910px; }
+#durak .card.front.card_8S {
+  background-position: 0 -3007px; }
+#durak .card.front.card_9C {
+  background-position: 0 -3104px; }
+#durak .card.front.card_9D {
+  background-position: 0 -3201px; }
+#durak .card.front.card_9H {
+  background-position: 0 -3298px; }
+#durak .card.front.card_9S {
+  background-position: 0 -3395px; }
+#durak .card.front.card_10C {
+  background-position: 0 -3492px; }
+#durak .card.front.card_10D {
+  background-position: 0 -3589px; }
+#durak .card.front.card_10H {
+  background-position: 0 -3686px; }
+#durak .card.front.card_10S {
+  background-position: 0 -3783px; }
+#durak .card.front.card_11C {
+  background-position: 0 -3880px; }
+#durak .card.front.card_11D {
+  background-position: 0 -3977px; }
+#durak .card.front.card_11H {
+  background-position: 0 -4074px; }
+#durak .card.front.card_11S {
+  background-position: 0 -4171px; }
+#durak .card.front.card_12C {
+  background-position: 0 -4268px; }
+#durak .card.front.card_12D {
+  background-position: 0 -4365px; }
+#durak .card.front.card_12H {
+  background-position: 0 -4462px; }
+#durak .card.front.card_12S {
+  background-position: 0 -4559px; }
+#durak .card.front.card_13C {
+  background-position: 0 -4656px; }
+#durak .card.front.card_13D {
+  background-position: 0 -4753px; }
+#durak .card.front.card_13H {
+  background-position: 0 -4850px; }
+#durak .card.front.card_13S {
+  background-position: 0 -4947px; }
