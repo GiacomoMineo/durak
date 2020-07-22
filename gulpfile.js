@@ -15,7 +15,7 @@ gulp.task('styles', function(done) {
     .on('end', done);
 });
 
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', gulp.series(['styles'], function () {
   browserSync({
     notify: false,
     port: 9000,
@@ -29,6 +29,6 @@ gulp.task('serve', ['styles'], function () {
     'app/*.html',
     'app/js/**/*.js'
   ]).on('change', reload);
-});
+}));
 
-gulp.watch('app/scss/**/*.scss', ['styles']).on('change', reload);;
+gulp.watch('app/scss/**/*.scss', gulp.series(['styles'])).on('change', reload);;

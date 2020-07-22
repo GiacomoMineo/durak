@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
 /* Durak
   main.scss
   31/05/2015
 */
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700");
 * {
   margin: 0;
   padding: 0; }
@@ -93,7 +93,7 @@ body, input, button, select {
       .nav-main.play .title::after {
         border-width: 20.5px; }
       .nav-main.play .title::before {
-        left: -40px;
+        left: -41px;
         border-width: 20.5px; }
 
 .splash-input {
@@ -172,7 +172,7 @@ body, input, button, select {
     .splash-input .select-wrapper select {
       background: transparent;
       width: 168px;
-      padding: 4px 10px 4px;
+      padding: 0 10px 4px;
       border: 0;
       border-radius: 0;
       height: 36px;
@@ -330,9 +330,9 @@ body, input, button, select {
     border-radius: 2px;
     margin-right: 4px; }
     #durak .card.front {
-      background: url('/img/cards.png') no-repeat; }
+      background: url("/img/cards.png") no-repeat; }
     #durak .card.back {
-      background: url('/img/back.jpg') no-repeat;
+      background: url("/img/back.jpg") no-repeat;
       background-position: center center; }
   #durak .hand-card {
     cursor: pointer;
@@ -452,7 +452,7 @@ body, input, button, select {
   right: 16px;
   width: 50px;
   height: 50px;
-  background: url('/img/suits.png') no-repeat; }
+  background: url("/img/suits.png") no-repeat; }
   #durak .suits.S {
     background-position: 0 0; }
   #durak .suits.H {
@@ -464,105 +464,156 @@ body, input, button, select {
 
 #durak .card.front.card_14C {
   background-position: 0 0; }
+
 #durak .card.front.card_14D {
   background-position: 0 -97px; }
+
 #durak .card.front.card_14H {
   background-position: 0 -194px; }
+
 #durak .card.front.card_14S {
   background-position: 0 -291px; }
+
 #durak .card.front.card_2C {
   background-position: 0 -388px; }
+
 #durak .card.front.card_2D {
   background-position: 0 -485px; }
+
 #durak .card.front.card_2H {
   background-position: 0 -582px; }
+
 #durak .card.front.card_2S {
   background-position: 0 -679px; }
+
 #durak .card.front.card_3C {
   background-position: 0 -776px; }
+
 #durak .card.front.card_3D {
   background-position: 0 -873px; }
+
 #durak .card.front.card_3H {
   background-position: 0 -970px; }
+
 #durak .card.front.card_3S {
   background-position: 0 -1067px; }
+
 #durak .card.front.card_4C {
   background-position: 0 -1164px; }
+
 #durak .card.front.card_4D {
   background-position: 0 -1261px; }
+
 #durak .card.front.card_4H {
   background-position: 0 -1358px; }
+
 #durak .card.front.card_4S {
   background-position: 0 -1455px; }
+
 #durak .card.front.card_5C {
   background-position: 0 -1552px; }
+
 #durak .card.front.card_5D {
   background-position: 0 -1649px; }
+
 #durak .card.front.card_5H {
   background-position: 0 -1746px; }
+
 #durak .card.front.card_5S {
   background-position: 0 -1843px; }
+
 #durak .card.front.card_6C {
   background-position: 0 -1940px; }
+
 #durak .card.front.card_6D {
   background-position: 0 -2037px; }
+
 #durak .card.front.card_6H {
   background-position: 0 -2134px; }
+
 #durak .card.front.card_6S {
   background-position: 0 -2231px; }
+
 #durak .card.front.card_7C {
   background-position: 0 -2328px; }
+
 #durak .card.front.card_7D {
   background-position: 0 -2425px; }
+
 #durak .card.front.card_7H {
   background-position: 0 -2522px; }
+
 #durak .card.front.card_7S {
   background-position: 0 -2619px; }
+
 #durak .card.front.card_8C {
   background-position: 0 -2716px; }
+
 #durak .card.front.card_8D {
   background-position: 0 -2813px; }
+
 #durak .card.front.card_8H {
   background-position: 0 -2910px; }
+
 #durak .card.front.card_8S {
   background-position: 0 -3007px; }
+
 #durak .card.front.card_9C {
   background-position: 0 -3104px; }
+
 #durak .card.front.card_9D {
   background-position: 0 -3201px; }
+
 #durak .card.front.card_9H {
   background-position: 0 -3298px; }
+
 #durak .card.front.card_9S {
   background-position: 0 -3395px; }
+
 #durak .card.front.card_10C {
   background-position: 0 -3492px; }
+
 #durak .card.front.card_10D {
   background-position: 0 -3589px; }
+
 #durak .card.front.card_10H {
   background-position: 0 -3686px; }
+
 #durak .card.front.card_10S {
   background-position: 0 -3783px; }
+
 #durak .card.front.card_11C {
   background-position: 0 -3880px; }
+
 #durak .card.front.card_11D {
   background-position: 0 -3977px; }
+
 #durak .card.front.card_11H {
   background-position: 0 -4074px; }
+
 #durak .card.front.card_11S {
   background-position: 0 -4171px; }
+
 #durak .card.front.card_12C {
   background-position: 0 -4268px; }
+
 #durak .card.front.card_12D {
   background-position: 0 -4365px; }
+
 #durak .card.front.card_12H {
   background-position: 0 -4462px; }
+
 #durak .card.front.card_12S {
   background-position: 0 -4559px; }
+
 #durak .card.front.card_13C {
   background-position: 0 -4656px; }
+
 #durak .card.front.card_13D {
   background-position: 0 -4753px; }
+
 #durak .card.front.card_13H {
   background-position: 0 -4850px; }
+
 #durak .card.front.card_13S {
   background-position: 0 -4947px; }
